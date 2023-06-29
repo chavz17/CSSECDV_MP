@@ -10,6 +10,10 @@ import java.util.ArrayList;
 
 import javax.swing.WindowConstants;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.math.*;
+
 public class Frame extends javax.swing.JFrame {
 
     public Frame() {
@@ -260,8 +264,26 @@ public class Frame extends javax.swing.JFrame {
         frameView.show(Container, "registerPnl");
     }
     
+    public String MD5(String s) throws Exception {
+        MessageDigest m=MessageDigest.getInstance("MD5");
+        m.update(s.getBytes(),0,s.length());     
+        return new BigInteger(1,m.digest()).toString(16); 
+     }
+    
     public void registerAction(String username, String password, String confpass){
-        main.sqlite.addUser(username, password);
+    	String hashedPassword = null;
+    	if(password.equals(confpass)) {
+    		try {
+				hashedPassword = MD5(password);
+				main.sqlite.addUser(username, hashedPassword);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	else {
+    		System.out.println("Passwords do not match");
+    	}
     }
     
     public void loginAction(String username, String password) {
@@ -270,17 +292,23 @@ public class Frame extends javax.swing.JFrame {
         	String name = users.get(nCtr).getUsername();
         	String pass = users.get(nCtr).getPassword();
         	
-        	if(name.equals(username)) {
-        		if(pass.equals(password)) {
-        			this.mainNav();
-        		} else {
-        			//Tell the user that the username or password is incorrect
-            		System.out.println("username or password is incorrect");
-        		}
-        	} else {
-        		//Tell the user that the username or password is incorrect
-        		System.out.println("username or password is incorrect");
-        	}
+        	try {
+				if(name.equals(username)) {
+	        		if(MD5(password).equals(pass)) {
+	        			this.mainNav();
+	        		} else {
+	        			//Tell the user that the username or password is incorrect
+	            		System.out.println("username or password is incorrect");
+	        		}
+	        	} else {
+	        		//Tell the user that the username or password is incorrect
+	        		System.out.println("username or password is incorrect");
+	        	}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
     	}
     }
 
