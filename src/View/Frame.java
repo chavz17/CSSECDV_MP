@@ -264,6 +264,26 @@ public class Frame extends javax.swing.JFrame {
         frameView.show(Container, "registerPnl");
     }
     
+    public void adminNav(){
+    	adminHomePnl.showPnl("home");
+        contentView.show(Content, "adminHomePnl");
+    }
+    
+    public void managerNav(){
+    	managerHomePnl.showPnl("home");
+        contentView.show(Content, "managerHomePnl");
+    }
+    
+    public void staffNav(){
+    	staffHomePnl.showPnl("home");
+        contentView.show(Content, "staffHomePnl");
+    }
+    
+    public void clientNav(){
+    	clientHomePnl.showPnl("home");
+        contentView.show(Content, "clientHomePnl");
+    }
+    
     public String MD5(String s) throws Exception {
         MessageDigest m=MessageDigest.getInstance("MD5");
         m.update(s.getBytes(),0,s.length());     
@@ -288,27 +308,55 @@ public class Frame extends javax.swing.JFrame {
     
     public void loginAction(String username, String password) {
     	ArrayList<User> users = main.sqlite.getUsers();
+    	int i = 0;
+    	
     	for(int nCtr = 0; nCtr < users.size(); nCtr++){
         	String name = users.get(nCtr).getUsername();
         	String pass = users.get(nCtr).getPassword();
-        	
+        	int role = users.get(nCtr).getRole();
+    
         	try {
+        		//checks if the ser arraylist has been fully iterated
+        		if(i == users.size() - 1) {
+            		System.out.println("username or password is incorrect");
+            	}
+        		
 				if(name.equals(username)) {
 	        		if(MD5(password).equals(pass)) {
 	        			this.mainNav();
+	        			switch(role) {
+	        				case 1: 
+	        					break;
+	        				case 2:
+	        					this.clientNav();
+	        					break;
+	        				case 3:
+	        					this.staffNav();
+	        					break;
+	        				case 4: 
+	        					this.managerNav();
+	        					break;
+	        				case 5: 
+	        					this.adminNav();
+	        					break;
+	        			}
+	        			break;
 	        		} else {
 	        			//Tell the user that the username or password is incorrect
-	            		System.out.println("username or password is incorrect");
+	            		//System.out.println("username or password is incorrect");
+	        			i++;
+	        			continue;
 	        		}
 	        	} else {
 	        		//Tell the user that the username or password is incorrect
-	        		System.out.println("username or password is incorrect");
-	        	}
+	        		//System.out.println("username or password is incorrect");
+	        		i++;
+        			continue;
+	        	}				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-        	
+			}       	
     	}
     }
 
