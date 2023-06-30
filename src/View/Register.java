@@ -1,6 +1,5 @@
-package View;
 
-import javax.swing.JOptionPane;
+package View;
 
 public class Register extends javax.swing.JPanel {
 
@@ -98,35 +97,7 @@ public class Register extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
-        String username = usernameFld.getText();
-        String password = passwordFld.getText();
-        String confirmPassword = confpassFld.getText();
-
-
-        // Check if passwords match
-        if (!password.equals(confirmPassword)) {
-            JOptionPane.showMessageDialog(this, "Passwords do not match.", "Registration Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        // Check minimum length
-        if (password.length() < 8) {
-            JOptionPane.showMessageDialog(this, "Password should have a minimum of 8 characters.", "Registration Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        // Check character types
-        boolean hasUppercase = !password.equals(password.toLowerCase());
-        boolean hasLowercase = !password.equals(password.toUpperCase());
-        boolean hasDigit = password.matches(".*\\d.*");
-        boolean hasSpecialChar = !password.matches("[A-Za-z0-9 ]*");
-
-        if (!(hasUppercase && hasLowercase && hasDigit && hasSpecialChar)) {
-            JOptionPane.showMessageDialog(this, "Password should include a combination of uppercase letters, lowercase letters, numbers, and special characters.", "Registration Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        frame.registerAction(username, password, confirmPassword);
+        frame.registerAction(usernameFld.getText(), passwordFld.getText(), confpassFld.getText());
         frame.loginNav();
     }//GEN-LAST:event_registerBtnActionPerformed
 
