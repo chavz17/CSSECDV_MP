@@ -8,6 +8,7 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 import java.security.MessageDigest;
@@ -318,7 +319,8 @@ public class Frame extends javax.swing.JFrame {
         	try {
         		//checks if the ser arraylist has been fully iterated
         		if(i == users.size() - 1) {
-            		System.out.println("username or password is incorrect");
+            		//System.out.println("username or password is incorrect");
+        			JOptionPane.showMessageDialog(this, "Username or password is incorrect", "Incorrect Login Details", JOptionPane.ERROR_MESSAGE);
             	}
         		
 				if(name.equals(username)) {
@@ -326,6 +328,7 @@ public class Frame extends javax.swing.JFrame {
 	        			this.mainNav();
 	        			switch(role) {
 	        				case 1: 
+	        					JOptionPane.showMessageDialog(this, "This account is disabled", "Disabled account", JOptionPane.ERROR_MESSAGE);
 	        					break;
 	        				case 2:
 	        					this.clientNav();
