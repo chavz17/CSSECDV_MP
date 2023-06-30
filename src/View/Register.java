@@ -132,14 +132,20 @@ public class Register extends javax.swing.JPanel {
         registeredUsernames.add(username);
         frame.registerAction(username, password, confirmPassword);
         frame.loginNav();
+        clearFields();
     }//GEN-LAST:event_registerBtnActionPerformed
 
     private boolean isUsernameTaken(String username) {
         return registeredUsernames.contains(username);
     }
-
+    private void clearFields() {
+        usernameFld.setText("");
+        passwordFld.setText("");
+        confpassFld.setText("");
+    }
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         frame.loginNav();
+        clearFields();
     }//GEN-LAST:event_backBtnActionPerformed
 
 
