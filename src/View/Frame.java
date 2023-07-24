@@ -6,6 +6,7 @@ import Model.User;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.awt.HeadlessException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -311,16 +312,86 @@ public class Frame extends javax.swing.JFrame {
     	ArrayList<User> users = main.sqlite.getUsers();
     	int i = 0;
     	
+    	for (User u : users){
+    		i += 1;
+    		try {
+				if(u.getUsername().equals(username) && u.getPassword().equals(MD5(password))) {
+					int role = u.getRole();
+					
+					this.mainNav();
+					switch(role) {
+					case 1: 
+						JOptionPane.showMessageDialog(this, "This account is disabled", "Disabled account", JOptionPane.ERROR_MESSAGE);
+						break;
+					case 2:
+						this.clientNav();
+						break;
+					case 3:
+						this.staffNav();
+						break;
+					case 4: 
+						this.managerNav();
+						break;
+					case 5: 
+						this.adminNav();
+						break;
+					}
+					
+					break;
+				} else if (i == users.size()) {
+					JOptionPane.showMessageDialog(this, "Username or password is incorrect", "Incorrect Login Details", JOptionPane.ERROR_MESSAGE);
+					break;
+				}
+			} catch (HeadlessException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+    	}
+    	
+    	/*
+    	if(users.contains(user)) {
+    		JOptionPane.showMessageDialog(this, "Username or password is incorrect", "Incorrect Login Details", JOptionPane.ERROR_MESSAGE);
+    	} else {
+    		int idx = users.indexOf(user);
+    		int role = users.get(idx).getRole();
+    		
+    		switch(role) {
+			case 1: 
+				JOptionPane.showMessageDialog(this, "This account is disabled", "Disabled account", JOptionPane.ERROR_MESSAGE);
+				break;
+			case 2:
+				this.clientNav();
+				break;
+			case 3:
+				this.staffNav();
+				break;
+			case 4: 
+				this.managerNav();
+				break;
+			case 5: 
+				this.adminNav();
+				break;
+    		}
+    	} */
+    	
+    	/*
     	for(int nCtr = 0; nCtr < users.size(); nCtr++){
         	String name = users.get(nCtr).getUsername();
         	String pass = users.get(nCtr).getPassword();
         	int role = users.get(nCtr).getRole();
-    
+        	
+        	User user = new User(username, password);
+        	System.out.println(users.contains(user));
         	try {
         		//checks if the ser arraylist has been fully iterated
-        		if(i == users.size() - 1) {
+        		if(!users.contains(user)) {
+        			System.out.println(users.contains(user));
             		//System.out.println("username or password is incorrect");
         			JOptionPane.showMessageDialog(this, "Username or password is incorrect", "Incorrect Login Details", JOptionPane.ERROR_MESSAGE);
+        			break;
             	}
         		
 				if(name.equals(username)) {
@@ -360,7 +431,7 @@ public class Frame extends javax.swing.JFrame {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}       	
-    	}
+    	} */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
