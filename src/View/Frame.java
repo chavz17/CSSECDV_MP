@@ -267,22 +267,18 @@ public class Frame extends javax.swing.JFrame {
     }
     
     public void adminNav(){
-    	adminHomePnl.showPnl("home");
         contentView.show(Content, "adminHomePnl");
     }
     
     public void managerNav(){
-    	managerHomePnl.showPnl("home");
         contentView.show(Content, "managerHomePnl");
     }
     
     public void staffNav(){
-    	staffHomePnl.showPnl("home");
         contentView.show(Content, "staffHomePnl");
     }
     
     public void clientNav(){
-    	clientHomePnl.showPnl("home");
         contentView.show(Content, "clientHomePnl");
     }
     
