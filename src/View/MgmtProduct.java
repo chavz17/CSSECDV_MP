@@ -21,9 +21,11 @@ public class MgmtProduct extends javax.swing.JPanel {
 
     public SQLite sqlite;
     public DefaultTableModel tableModel;
+    public JPanel panel;
     
     public MgmtProduct(SQLite sqlite, JPanel panel) {
-        initComponents(panel);
+    	this.panel = panel;
+        initComponents(this.panel);
         this.sqlite = sqlite;
         tableModel = (DefaultTableModel)table.getModel();
         table.getTableHeader().setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
@@ -141,7 +143,7 @@ public class MgmtProduct extends javax.swing.JPanel {
             }
         });
 
-        if(panel instanceof ClientHome) {
+        if(this.panel instanceof ClientHome) {
         	javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
             this.setLayout(layout);
             layout.setHorizontalGroup(
@@ -244,6 +246,8 @@ public class MgmtProduct extends javax.swing.JPanel {
             System.out.println(nameFld.getText());
             System.out.println(stockFld.getText());
             System.out.println(priceFld.getText());
+            
+            this.sqlite.addProduct(nameFld.getText(), Integer.parseInt(stockFld.getText()), Double.parseDouble(priceFld.getText()));
         }
     }//GEN-LAST:event_addBtnActionPerformed
 
@@ -267,6 +271,7 @@ public class MgmtProduct extends javax.swing.JPanel {
                 System.out.println(nameFld.getText());
                 System.out.println(stockFld.getText());
                 System.out.println(priceFld.getText());
+                
             }
         }
     }//GEN-LAST:event_editBtnActionPerformed
