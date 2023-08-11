@@ -306,9 +306,14 @@ public class Frame extends javax.swing.JFrame {
     	}
     }
     
+    int attempts = 0;
     public void loginAction(String username, String password) {
     	ArrayList<User> users = main.sqlite.getUsers();
     	int i = 0;
+    
+    	if(attempts == 10) {
+    		JOptionPane.showMessageDialog(this, "", "Disabled account", JOptionPane.ERROR_MESSAGE);
+    	}
     	
     	for (User u : users){
     		i += 1;
@@ -344,6 +349,7 @@ public class Frame extends javax.swing.JFrame {
 					break;
 				} else if (i == users.size()) {
 					JOptionPane.showMessageDialog(this, "Username or password is incorrect", "Incorrect Login Details", JOptionPane.ERROR_MESSAGE);
+					attempts++;
 					//break;
 				}
 			} catch (HeadlessException e1) {
