@@ -248,6 +248,7 @@ public class MgmtProduct extends javax.swing.JPanel {
             System.out.println(priceFld.getText());
             
             this.sqlite.addProduct(nameFld.getText(), Integer.parseInt(stockFld.getText()), Double.parseDouble(priceFld.getText()));
+            this.init();
         }
     }//GEN-LAST:event_addBtnActionPerformed
 
@@ -270,8 +271,7 @@ public class MgmtProduct extends javax.swing.JPanel {
             if (result == JOptionPane.OK_OPTION) {
                 System.out.println(nameFld.getText());
                 System.out.println(stockFld.getText());
-                System.out.println(priceFld.getText());
-                
+                System.out.println(priceFld.getText());     
             }
         }
     }//GEN-LAST:event_editBtnActionPerformed
@@ -282,6 +282,8 @@ public class MgmtProduct extends javax.swing.JPanel {
             
             if (result == JOptionPane.YES_OPTION) {
                 System.out.println(tableModel.getValueAt(table.getSelectedRow(), 0));
+                this.sqlite.removeProduct((String) tableModel.getValueAt(table.getSelectedRow(), 0));
+                this.init();
             }
         }
     }//GEN-LAST:event_deleteBtnActionPerformed
