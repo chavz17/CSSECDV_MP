@@ -319,7 +319,7 @@ public class Frame extends javax.swing.JFrame {
 					this.mainNav();
 					switch(role) {
 					case 1: 
-						JOptionPane.showMessageDialog(this, "This account is disabled", "Disabled account", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(this, "This account is disabled.", "Disabled account", JOptionPane.ERROR_MESSAGE);
 						break;
 					case 2:
 						this.clientNav();
