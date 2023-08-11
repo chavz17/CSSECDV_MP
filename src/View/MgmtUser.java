@@ -216,6 +216,7 @@ public class MgmtUser extends javax.swing.JPanel {
             
             if (result == JOptionPane.YES_OPTION) {
                 System.out.println(tableModel.getValueAt(table.getSelectedRow(), 0));
+                this.sqlite.lockUser((String) tableModel.getValueAt(table.getSelectedRow(), 0), 1, 1);
             }
         }
     }//GEN-LAST:event_lockBtnActionPerformed

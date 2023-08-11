@@ -312,6 +312,7 @@ public class Frame extends javax.swing.JFrame {
     	
     	for (User u : users){
     		i += 1;
+    		System.out.println(i);
     		try {
 				if(u.getUsername().equals(username) && u.getPassword().equals(MD5(password))) {
 					int role = u.getRole();
@@ -319,7 +320,9 @@ public class Frame extends javax.swing.JFrame {
 					this.mainNav();
 					switch(role) {
 					case 1: 
+						System.out.println("disabled " + role);
 						JOptionPane.showMessageDialog(this, "This account is disabled.", "Disabled account", JOptionPane.ERROR_MESSAGE);
+						//this.loginNav();
 						break;
 					case 2:
 						this.clientNav();
@@ -331,6 +334,7 @@ public class Frame extends javax.swing.JFrame {
 						this.managerNav();
 						break;
 					case 5: 
+						System.out.println("admin");
 						this.adminNav();
 						break;
 					}
@@ -338,7 +342,7 @@ public class Frame extends javax.swing.JFrame {
 					break;
 				} else if (i == users.size()) {
 					JOptionPane.showMessageDialog(this, "Username or password is incorrect", "Incorrect Login Details", JOptionPane.ERROR_MESSAGE);
-					break;
+					//break;
 				}
 			} catch (HeadlessException e1) {
 				// TODO Auto-generated catch block
@@ -347,6 +351,8 @@ public class Frame extends javax.swing.JFrame {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+    		
+    		//break;
     	}
     }
 
