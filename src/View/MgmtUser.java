@@ -191,6 +191,9 @@ public class MgmtUser extends javax.swing.JPanel {
             if(result != null){
                 System.out.println(tableModel.getValueAt(table.getSelectedRow(), 0));
                 System.out.println(result.charAt(0));
+                
+                this.sqlite.editUserRole((String)tableModel.getValueAt(table.getSelectedRow(), 0), Integer.parseInt(String.valueOf(result.charAt(0))));
+                this.init();
             }
         }
     }//GEN-LAST:event_editRoleBtnActionPerformed

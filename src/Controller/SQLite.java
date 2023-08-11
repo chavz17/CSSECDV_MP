@@ -291,6 +291,18 @@ public class SQLite {
         }
     }
     
+    public void editUserRole(String username, int role) {
+        String sql = "UPDATE users SET role = " + role + " WHERE username = '" + username + "';";
+        
+        try (Connection conn = DriverManager.getConnection(driverURL);
+            Statement stmt = conn.createStatement()){
+            stmt.execute(sql);
+            
+        } catch (Exception ex) {
+            System.out.print(ex);
+        }
+    }
+    
     public void lockUser(String username, int role, int locked) {
         String sql = "UPDATE users SET role = " + role + ", locked = " + locked + " WHERE username = '" + username + "';";
         
