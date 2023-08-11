@@ -316,25 +316,27 @@ public class Frame extends javax.swing.JFrame {
     		try {
 				if(u.getUsername().equals(username) && u.getPassword().equals(MD5(password))) {
 					int role = u.getRole();
-					
-					this.mainNav();
+										
 					switch(role) {
 					case 1: 
 						System.out.println("disabled " + role);
 						JOptionPane.showMessageDialog(this, "This account is disabled.", "Disabled account", JOptionPane.ERROR_MESSAGE);
-						//this.loginNav();
 						break;
 					case 2:
+						this.mainNav();
 						this.clientNav();
 						break;
 					case 3:
+						this.mainNav();
 						this.staffNav();
 						break;
 					case 4: 
+						this.mainNav();
 						this.managerNav();
 						break;
 					case 5: 
 						System.out.println("admin");
+						this.mainNav();
 						this.adminNav();
 						break;
 					}
