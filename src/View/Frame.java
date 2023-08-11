@@ -331,38 +331,6 @@ public class Frame extends javax.swing.JFrame {
 						this.managerNav();
 						break;
 					case 5: 
-						javax.swing.GroupLayout NavigationLayout = new javax.swing.GroupLayout(Navigation);
-				        Navigation.setLayout(NavigationLayout);
-				        NavigationLayout.setHorizontalGroup(
-				            NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				            .addGroup(NavigationLayout.createSequentialGroup()
-				                .addContainerGap()
-				                .addGroup(NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				                    .addComponent(adminBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-				                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-				                    .addComponent(managerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-				                    .addComponent(staffBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-				                    .addComponent(clientBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-				                    .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				                .addContainerGap())
-				        );
-				        NavigationLayout.setVerticalGroup(
-				            NavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				            .addGroup(NavigationLayout.createSequentialGroup()
-				                .addContainerGap()
-				                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-				                .addGap(18, 18, 18)
-				                .addComponent(adminBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-				                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-				                .addComponent(managerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-				                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-				                .addComponent(staffBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-				                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-				                .addComponent(clientBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-				                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
-				                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-				                .addContainerGap())
-				        );
 						this.adminNav();
 						break;
 					}
