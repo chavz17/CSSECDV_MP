@@ -192,7 +192,12 @@ public class MgmtUser extends javax.swing.JPanel {
                 System.out.println(tableModel.getValueAt(table.getSelectedRow(), 0));
                 System.out.println(result.charAt(0));
                 
-                this.sqlite.editUserRole((String)tableModel.getValueAt(table.getSelectedRow(), 0), Integer.parseInt(String.valueOf(result.charAt(0))));
+                if(Integer.parseInt(String.valueOf(result.charAt(0))) == 1) {
+                	this.sqlite.lockUser((String) tableModel.getValueAt(table.getSelectedRow(), 0), Integer.parseInt(String.valueOf(result.charAt(0))), 1);
+                } else {
+                	this.sqlite.editUserRole((String)tableModel.getValueAt(table.getSelectedRow(), 0), Integer.parseInt(String.valueOf(result.charAt(0))));
+                }
+                
                 this.init();
             }
         }
@@ -223,6 +228,7 @@ public class MgmtUser extends javax.swing.JPanel {
             if (result == JOptionPane.YES_OPTION) {
                 System.out.println(tableModel.getValueAt(table.getSelectedRow(), 0));
                 this.sqlite.lockUser((String) tableModel.getValueAt(table.getSelectedRow(), 0), 1, 1);
+                this.init();
             }
         }
     }//GEN-LAST:event_lockBtnActionPerformed
